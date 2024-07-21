@@ -69,40 +69,6 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "position_control");
     PositionControl pc;
-    // ros::NodeHandle nh;
-    // ros::AsyncSpinner spinner(1);
-    // spinner.start();   
-    // // Load URDF from rosparameter server
-    // std::string robot_description = "/robot_description";
-    // std::string urdf_string;
-    // // std::string pathtoURDF = "/root/catkin_ws/src/testing_robot_library/urdf/parody_mark1.urdf"; 
-    // // std::string pathtoURDF = "/root/catkin_ws/src/iiwa_ros/iiwa_description/urdf/iiwa14.urdf";         
-    // while (urdf_string.empty()) {
-    //         // ROS_INFO("Controller is waiting for model");
-
-    //         nh.getParam(robot_description, urdf_string);
-    //         usleep(100000);
-    //     }
-    // try
-    // {
-    //     KinematicTree model(urdf_string);
-    //     int numJoints = model.number_of_joints();
-    //     ROS_INFO_STREAM("Number of joints: " << numJoints);
-    //     Eigen::VectorXd q    = Eigen::VectorXd::Random(numJoints);
-    //     Eigen::VectorXd qdot = Eigen::VectorXd::Random(numJoints);
-    //     if(not model.update_state(q, qdot))
-    //     {
-    //         std::cerr << "[ERROR] [URDF TEST] Couldn't update the state for some reason." << std::endl;
-    //     }
-        
-        
-    // }
-    // catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }
-    
-    // spinner.stop();
     return 0;
 
 }
