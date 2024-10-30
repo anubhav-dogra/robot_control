@@ -14,8 +14,8 @@ class ContactForceController{
         ContactForceController(ros::NodeHandle& nh)
         : tfBuffer(), tfListener(tfBuffer), // Initialize tfBuffer and tfListener as class members
          pid_controller(Kp, Ki, Kd, alpha),
-         roll_pid_controller(Kp_roll_orientation, Kd_roll_orientation, Ki_orientation, alpha), 
-         pitch_pid_controller(Kp_pitch_orientation, Kd_pitch_orientation, Ki_orientation, alpha)
+         roll_pid_controller(Kp_roll_orientation, Ki_orientation, Kd_roll_orientation, alpha), 
+         pitch_pid_controller(Kp_pitch_orientation, Ki_orientation, Kd_pitch_orientation, alpha)
         {
             // ros::param::get("end_effector_name", end_effector_name);
             // tf2_ros::Buffer tfBuffer;
@@ -70,7 +70,7 @@ class ContactForceController{
                 }
                 double dRoll = roll_pid_controller.calculateControlSignal(0, -current_force_y, dt, alpha);
                 double dPitch = pitch_pid_controller.calculateControlSignal(0, current_force_x, dt, alpha);
-                std::cout << dPitch << std::endl;
+                // std::cout << dPitch << std::endl;
                 double max_dRoll = 0.0005;  // Maximum allowed movement per iteration
                 double max_dPitch = 0.0005;  // Maximum allowed movement per iteration
                 if (fabs(dRoll) > max_dRoll) {
@@ -142,8 +142,8 @@ class ContactForceController{
         ros::Time current_time, prev_time;
         double factor = 10000.0;
         double Kp = 1/factor;
-        double Kd = 0.05/factor;
-        double Ki =0.0/factor;
+        double Kd = 0.0/factor;
+        double Ki = 0.01/factor;
 
         double Kp_roll_orientation = 1.0/factor;
         double Kd_roll_orientation = 0.0/factor;
